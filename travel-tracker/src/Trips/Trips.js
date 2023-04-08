@@ -1,8 +1,8 @@
 import './Trips.css';
 import Trip from '../Trip/Trip';
 
-const Trips = ({ allTrips }) => {
-  const sortedTrips = allTrips.sort((a, b) => {
+const Trips = ({ myTrips }) => {
+  const sortedTrips = myTrips.sort((a, b) => {
     if (a.date < b.date) {
       return -1;
     }
@@ -12,15 +12,19 @@ const Trips = ({ allTrips }) => {
     return 0;
   });
 
-  return sortedTrips.map((trip) => {
-    return (
-      <div className="Trips-container">
-        <Trip
-          trip={trip}
-        ></Trip>
-      </div>
-    )
-  })
+  return (
+    <div className="Trips-container">
+      <h2>My Trips:</h2>
+      { sortedTrips.map((trip) => {
+        return (
+          <Trip
+            trip={trip}
+          ></Trip>
+          )
+        })
+      }
+    </div>
+  )
 }
 
 export default Trips;
