@@ -2,11 +2,13 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import Trips from './Trips/Trips';
 import TripRequest from './TripRequest/TripRequest';
+import Notifications from './Notifications/Notifications';
 
 function App() {
   const [userInfo, setUserInfo] = useState({ userID: 45 })
   const [myTrips, setMyTrips] = useState([]);
   const [tripRequests, setTripRequest] = useState([]);
+  const [notifications, setNotification] = useState([]);
 
   useEffect(() => {
     try {
@@ -18,7 +20,7 @@ function App() {
       }
       fetchAllTrips();
     } catch (error) {
-      console.log(error);
+      setNotification(n => [...n, error.message]);
     }
   }, [userInfo.userID]);
 
@@ -27,14 +29,13 @@ function App() {
       <header className="App-header">
         <h1>Travel Tracker</h1>
       </header>
-      <div>
-        {tripRequests.map((trip) => {
-          return(trip.status)
-        })}
-      </div>
+      <Notifications
+        notifications={notifications}
+      ></Notifications>
       <TripRequest
         userInfo={userInfo}
         setTripRequest={setTripRequest}
+        setNotification={setNotification}
       ></TripRequest>
       <Trips
         myTrips={myTrips}

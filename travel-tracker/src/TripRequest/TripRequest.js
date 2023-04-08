@@ -1,13 +1,12 @@
 import './TripRequest.css';
 import React, { useState, useEffect } from 'react';
 
-const TripRequest = ({ setTripRequest, userInfo }) => {
+const TripRequest = ({ userInfo, setTripRequest, setNotification }) => {
   const [requestedTrip, setRequestedTrip] = useState({ userID: userInfo.userID, status: 'pending', suggestedActivities: ['Hiking', 'Skiing']});
   // required: id (number), userID (number), destinationID (number), travelers (number), date (string: 'YYYY/MM/DD'), duration (number), status (string), suggestedActivities (Array<strings>)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    debugger
     addTripRequest();
   }
 
@@ -30,11 +29,11 @@ const TripRequest = ({ setTripRequest, userInfo }) => {
           body: JSON.stringify(requestedTrip)
         }
       )
-      console.log('Status', response.status);
       const result = await response.json();
       setTripRequest(t => [...t, result.newTrip]);
+      setNotification(n => [...n, result.message]);
     } catch (error) {
-      console.log(error);
+      setNotification(n => [...n, error.message]);
     }
   }
 
