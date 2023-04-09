@@ -1,10 +1,6 @@
 import './TripRequest.css';
-import React, { useState, useEffect } from 'react';
 
-const TripRequest = ({ userInfo, setTripRequest, setMyTrips, setNotification }) => {
-  const [requestedTrip, setRequestedTrip] = useState({ id: '', userID: userInfo.userID, destinationID: '', travelers: '', date: '', duration: '', status: 'active', suggestedActivities: ['Hiking', 'Skiing']});
-  // required: id (number), userID (number), destinationID (number), travelers (number), date (string: 'YYYY/MM/DD'), duration (number), status (string), suggestedActivities (Array<strings>)
-
+const TripRequest = ({ userInfo, requestedTrip, addTrip, setRequestedTrip }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addTrip();
@@ -32,27 +28,6 @@ const TripRequest = ({ userInfo, setTripRequest, setMyTrips, setNotification }) 
           break;
       }
       return formattedDate;
-    }
-  }
-
-  const addTrip = async () => {
-    try {
-      const response = await fetch(
-        'http://localhost:3001/api/v1/trips',
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(requestedTrip)
-        }
-      )
-      const result = await response.json();
-      setTripRequest(t => [...t, result.newTrip]);
-      setMyTrips(t => [...t, result.newTrip]);
-      setNotification([result.message]);
-    } catch (error) {
-      setNotification([error.message]);
     }
   }
 

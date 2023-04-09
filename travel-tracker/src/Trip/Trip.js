@@ -1,12 +1,6 @@
 import './Trip.css';
 
 const Trip = ({ trip, deleteTrip, modifyTrip }) => {
-  const updateTrip = () => {
-    trip.suggestedActivities.push('Fishing');
-    trip.status = 'approved';
-    modifyTrip(trip)
-  }
-
   return(
     <div key={trip.id} className="Trip-container">
       <p>Trip Id: {trip.id}</p>
@@ -21,7 +15,7 @@ const Trip = ({ trip, deleteTrip, modifyTrip }) => {
         })}
       </div>
       <div className="button-container">
-        <button onClick={updateTrip}>Modify</button>
+        <button onClick={() => modifyTrip(trip)}>Modify</button>
         <button onClick={() => deleteTrip(trip)}>Delete</button>
       </div>
     </div>
