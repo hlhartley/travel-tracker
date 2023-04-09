@@ -1,6 +1,8 @@
 ## Description
 I created an app in React called Travel Tracker, which tracks a user's trips. 
-Based on the Turing project: https://frontend.turing.edu/projects/travel-tracker.html
+
+## Project Requirements
+- Based on the Turing project: https://frontend.turing.edu/projects/travel-tracker.html
 
 ## Technologies Used
 - React
