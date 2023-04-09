@@ -35,10 +35,13 @@ function App() {
       <TripRequest
         userInfo={userInfo}
         setTripRequest={setTripRequest}
+        setMyTrips={setMyTrips}
         setNotification={setNotification}
       ></TripRequest>
       <Trips
         myTrips={myTrips}
+        setMyTrips={setMyTrips}
+        setNotification={setNotification}
       ></Trips>
     </div>
   );

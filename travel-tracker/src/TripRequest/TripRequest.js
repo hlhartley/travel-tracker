@@ -1,13 +1,13 @@
 import './TripRequest.css';
 import React, { useState, useEffect } from 'react';
 
-const TripRequest = ({ userInfo, setTripRequest, setNotification }) => {
-  const [requestedTrip, setRequestedTrip] = useState({ userID: userInfo.userID, status: 'pending', suggestedActivities: ['Hiking', 'Skiing']});
+const TripRequest = ({ userInfo, setTripRequest, setMyTrips, setNotification }) => {
+  const [requestedTrip, setRequestedTrip] = useState({ userID: userInfo.userID, status: 'active', suggestedActivities: ['Hiking', 'Skiing']});
   // required: id (number), userID (number), destinationID (number), travelers (number), date (string: 'YYYY/MM/DD'), duration (number), status (string), suggestedActivities (Array<strings>)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTripRequest();
+    addTrip();
   }
 
   const handleDateChange = (e) => {
@@ -17,7 +17,7 @@ const TripRequest = ({ userInfo, setTripRequest, setNotification }) => {
     setRequestedTrip({...requestedTrip, date: formattedDate});
   }
 
-  const addTripRequest = async () => {
+  const addTrip = async () => {
     try {
       const response = await fetch(
         'http://localhost:3001/api/v1/trips',
@@ -31,6 +31,7 @@ const TripRequest = ({ userInfo, setTripRequest, setNotification }) => {
       )
       const result = await response.json();
       setTripRequest(t => [...t, result.newTrip]);
+      setMyTrips(t => [...t, result.newTrip]);
       setNotification(n => [...n, result.message]);
     } catch (error) {
       setNotification(n => [...n, error.message]);
