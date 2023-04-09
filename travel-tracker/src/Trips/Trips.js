@@ -17,9 +17,32 @@ const Trips = ({ myTrips, setNotification, setMyTrips }) => {
       const tripIndex = myTrips.indexOf(trip);
       myTrips.splice(tripIndex, 1);
       setMyTrips(myTrips);
-      setNotification(n => [...n, result.message]);
+      setNotification([result.message]);
     } catch(error) {
-      setNotification(n => [...n, error.message]);
+      setNotification([error.message]);
+    }
+  }
+
+  const modifyTrip = async (trip) => {
+    try {
+      const response = await fetch(
+        'http://localhost:3001/api/v1/updateTrip',
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(trip),
+        }
+      )
+      const result = await response.json();
+      const tripIndex = myTrips.indexOf(trip);
+      myTrips.splice(tripIndex, 1);
+      myTrips.push(trip);
+      setMyTrips(myTrips);
+      setNotification([result.message]);
+    } catch (error) {
+      setNotification([error.message]);
     }
   }
 
@@ -38,6 +61,7 @@ const Trips = ({ myTrips, setNotification, setMyTrips }) => {
         return (
           <Trip
             trip={trip}
+            modifyTrip={modifyTrip}
             deleteTrip={deleteTrip}
           ></Trip>
           )

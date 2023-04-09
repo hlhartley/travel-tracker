@@ -8,6 +8,7 @@ const TripRequest = ({ userInfo, setTripRequest, setMyTrips, setNotification }) 
   const handleSubmit = (e) => {
     e.preventDefault();
     addTrip();
+    clearRequestedTrip();
   }
 
   const handleDateChange = (e) => {
@@ -32,10 +33,25 @@ const TripRequest = ({ userInfo, setTripRequest, setMyTrips, setNotification }) 
       const result = await response.json();
       setTripRequest(t => [...t, result.newTrip]);
       setMyTrips(t => [...t, result.newTrip]);
-      setNotification(n => [...n, result.message]);
+      setNotification([result.message]);
     } catch (error) {
-      setNotification(n => [...n, error.message]);
+      setNotification([error.message]);
     }
+  }
+
+  const clearRequestedTrip = () => {
+    setRequestedTrip(
+      {
+        id: '',
+        userID: userInfo.userID,
+        destinationID: '',
+        travelers: '',
+        date: '',
+        duration: '',
+        status: 'active',
+        suggestedActivities: ['Hiking', 'Skiing']
+      }
+    );
   }
 
   return (
@@ -46,6 +62,7 @@ const TripRequest = ({ userInfo, setTripRequest, setMyTrips, setNotification }) 
           Trip Id:
           <input
             type="number"
+            value={requestedTrip.id}
             onBlur={(e) => setRequestedTrip({...requestedTrip, id: parseInt(e.target.value)})}
           ></input>
         </label>
@@ -53,6 +70,7 @@ const TripRequest = ({ userInfo, setTripRequest, setMyTrips, setNotification }) 
           Destination Id:
           <input
             type="number"
+            value={requestedTrip.destinationID}
             onBlur={(e) => setRequestedTrip({...requestedTrip, destinationID: parseInt(e.target.value)})}
           ></input>
         </label>
@@ -60,6 +78,7 @@ const TripRequest = ({ userInfo, setTripRequest, setMyTrips, setNotification }) 
           # Travelers:
           <input
             type="number"
+            value={requestedTrip.travelers}
             onBlur={(e) => setRequestedTrip({...requestedTrip, travelers: parseInt(e.target.value)})}
           ></input>
         </label>
@@ -67,6 +86,7 @@ const TripRequest = ({ userInfo, setTripRequest, setMyTrips, setNotification }) 
           Date:
           <input
             type="date"
+            value={requestedTrip.date}
             onBlur={(e) => handleDateChange(e)}
           ></input>
         </label>
@@ -74,6 +94,7 @@ const TripRequest = ({ userInfo, setTripRequest, setMyTrips, setNotification }) 
           Duration (days):
           <input
             type="number"
+            value={requestedTrip.duration}
             onBlur={(e) => setRequestedTrip({...requestedTrip, duration: parseInt(e.target.value)})}
           ></input>
         </label>
