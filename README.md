@@ -1,5 +1,5 @@
 ## Description
-I created an app in React called Travel Tracker, which tracks a user's trips. 
+I created an app in React called Travel Tracker, which tracks a user's trips. The frontend implements the Fetch API to connect to the Travel Tracker API backend endpoints.
 
 ## Project Requirements
 Based on the Turing project: https://frontend.turing.edu/projects/travel-tracker.html
