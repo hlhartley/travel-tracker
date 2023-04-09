@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Trips from './Trips/Trips';
 import TripRequest from './TripRequest/TripRequest';
 import Notifications from './Notifications/Notifications';
-import { toBeRequired } from '@testing-library/jest-dom/dist/matchers';
 
 function App() {
   const [userInfo, setUserInfo] = useState({ userID: 45 })

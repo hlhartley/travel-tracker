@@ -28,6 +28,8 @@ const TripRequest = ({ userInfo, requestedTrip, addTrip, setRequestedTrip }) => 
           break;
       }
       return formattedDate;
+    } else {
+      return date;
     }
   }
 
@@ -80,7 +82,7 @@ const TripRequest = ({ userInfo, requestedTrip, addTrip, setRequestedTrip }) => 
             Date:
             <input
               type="date"
-              value={requestedTrip.date}
+              value={convertDate(requestedTrip.date, 'dash')}
               onChange={(e) => handleDateChange(e.target.value)}
             ></input>
           </label>
