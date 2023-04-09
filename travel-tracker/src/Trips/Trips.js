@@ -59,7 +59,7 @@ const Trips = ({ myTrips, setNotification, setMyTrips }) => {
         return 0;
       }).map((trip) => {
         return (
-          <Trip
+          trip && <Trip
             trip={trip}
             modifyTrip={modifyTrip}
             deleteTrip={deleteTrip}
