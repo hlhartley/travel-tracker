@@ -7,10 +7,6 @@ const Trip = ({ trip, deleteTrip, modifyTrip }) => {
     modifyTrip(trip)
   }
 
-  const removeTrip = () => {
-    deleteTrip(trip);
-  }
-
   return(
     <div key={trip.id} className="Trip-container">
       <p>Trip Id: {trip.id}</p>
@@ -24,8 +20,10 @@ const Trip = ({ trip, deleteTrip, modifyTrip }) => {
           )
         })}
       </div>
-      <button onClick={updateTrip}>Modify</button>
-      <button onClick={removeTrip}>Delete</button>
+      <div className="button-container">
+        <button onClick={updateTrip}>Modify</button>
+        <button onClick={() => deleteTrip(trip)}>Delete</button>
+      </div>
     </div>
   )
 }

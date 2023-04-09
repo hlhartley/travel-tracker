@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Trips from './Trips/Trips';
 import TripRequest from './TripRequest/TripRequest';
 import Notifications from './Notifications/Notifications';
+import { toBeRequired } from '@testing-library/jest-dom/dist/matchers';
 
 function App() {
   const [userInfo, setUserInfo] = useState({ userID: 45 })
@@ -26,18 +27,19 @@ function App() {
 
   return (
     <div className="App">
+      <div className="background-image"></div>
       <header className="App-header">
-        <h1>Travel Tracker</h1>
+        <h1>TRAVEL TRACKER</h1>
+        <TripRequest
+          userInfo={userInfo}
+          setTripRequest={setTripRequest}
+          setMyTrips={setMyTrips}
+          setNotification={setNotification}
+        ></TripRequest>
       </header>
       <Notifications
         notifications={notifications}
       ></Notifications>
-      <TripRequest
-        userInfo={userInfo}
-        setTripRequest={setTripRequest}
-        setMyTrips={setMyTrips}
-        setNotification={setNotification}
-      ></TripRequest>
       <Trips
         myTrips={myTrips}
         setMyTrips={setMyTrips}

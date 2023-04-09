@@ -73,49 +73,54 @@ const TripRequest = ({ userInfo, setTripRequest, setMyTrips, setNotification }) 
 
   return (
     <div>
-      <h2>Trip Request:</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <label>
-          Trip Id:
-          <input
-            type="number"
-            value={requestedTrip.id}
-            onChange={(e) => setRequestedTrip({...requestedTrip, id: parseInt(e.target.value)})}
-          ></input>
-        </label>
-        <label>
-          Destination Id:
-          <input
-            type="number"
-            value={requestedTrip.destinationID}
-            onChange={(e) => setRequestedTrip({...requestedTrip, destinationID: parseInt(e.target.value)})}
-          ></input>
-        </label>
-        <label>
-          # Travelers:
-          <input
-            type="number"
-            value={requestedTrip.travelers}
-            onChange={(e) => setRequestedTrip({...requestedTrip, travelers: parseInt(e.target.value)})}
-          ></input>
-        </label>
-        <label>
-          Date:
-          <input
-            type="date"
-            value={requestedTrip.date}
-            onChange={(e) => handleDateChange(e.target.value)}
-          ></input>
-        </label>
-        <label>
-          Duration (days):
-          <input
-            type="number"
-            value={requestedTrip.duration}
-            onChange={(e) => setRequestedTrip({...requestedTrip, duration: parseInt(e.target.value)})}
-          ></input>
-        </label>
+        <div>
+          <label>
+            Trip Id:
+            <input
+              type="number"
+              value={requestedTrip.id}
+              onChange={(e) => setRequestedTrip({...requestedTrip, id: parseInt(e.target.value)})}
+            ></input>
+          </label>
+          <label>
+            Destination Id:
+            <input
+              type="number"
+              value={requestedTrip.destinationID}
+              onChange={(e) => setRequestedTrip({...requestedTrip, destinationID: parseInt(e.target.value)})}
+            ></input>
+          </label>
+        </div>
+        <div>
+          <label>
+            # Travelers:
+            <input
+              type="number"
+              value={requestedTrip.travelers}
+              onChange={(e) => setRequestedTrip({...requestedTrip, travelers: parseInt(e.target.value)})}
+            ></input>
+          </label>
+          <label>
+            Date:
+            <input
+              type="date"
+              value={requestedTrip.date}
+              onChange={(e) => handleDateChange(e.target.value)}
+            ></input>
+          </label>
+        </div>
+        <div>
+          <label>
+            Duration:
+            <input
+              type="number"
+              value={requestedTrip.duration}
+              onChange={(e) => setRequestedTrip({...requestedTrip, duration: parseInt(e.target.value)})}
+            ></input>
+          </label>
         <input type="Submit" value="Submit"></input>
+        </div>
       </form>
     </div>
   )
