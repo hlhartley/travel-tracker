@@ -2,7 +2,7 @@
 I created an app in React called Travel Tracker, which tracks a user's trips. 
 
 ## Project Requirements
-- Based on the Turing project: https://frontend.turing.edu/projects/travel-tracker.html
+Based on the Turing project: https://frontend.turing.edu/projects/travel-tracker.html
 
 ## Go to App
 http://blackjack-game-react.s3-website-us-west-2.amazonaws.com/
