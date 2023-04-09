@@ -10,7 +10,7 @@ Based on the Turing project: https://frontend.turing.edu/projects/travel-tracker
 ## Technologies Used
 - React
 - React Hooks
-- Fetch API
+- [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 - AWS (for hosting)
 
 ## API
