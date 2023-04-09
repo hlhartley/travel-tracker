@@ -8,7 +8,7 @@ Based on the Turing project: https://frontend.turing.edu/projects/travel-tracker
 http://blackjack-game-react.s3-website-us-west-2.amazonaws.com/
 
 ## Screenshots
-![Desktop Screenshot](https://github.com/hlhartley/blackjack/blob/main/blackjack_desktop.png)
+![Screenshot](https://github.com/hlhartley/travel-tracker/blob/main/travel-tracker-screenshot.png)
 
 ## Technologies Used
 - React
