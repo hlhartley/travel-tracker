@@ -11,7 +11,6 @@ Based on the Turing project: https://frontend.turing.edu/projects/travel-tracker
 - React
 - React Hooks
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
-- AWS (for hosting)
 
 ## API
 - Travel Tracker API: https://github.com/turingschool-examples/travel-tracker-api
