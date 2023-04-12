@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Trips from './Trips/Trips';
 import TripRequest from './TripRequest/TripRequest';
 import Notifications from './Notifications/Notifications';
@@ -12,19 +12,21 @@ function App() {
   const [requestedTrip, setRequestedTrip] = useState({ id: '', userID: userInfo.userID, destinationID: '', travelers: '', date: '', duration: '', status: 'active', suggestedActivities: ['Hiking', 'Skiing']}); // mockData
   // required: id (number), userID (number), destinationID (number), travelers (number), date (string: 'YYYY/MM/DD'), duration (number), status (string), suggestedActivities (Array<strings>)
 
-  useEffect(() => {
+  const fetchAllTrips = useCallback(async () => {
     try {
-      const fetchAllTrips = async () => {
-        const response = await fetch('http://localhost:3001/api/v1/trips');
-        const result = await response.json();
-        const myTrips = result.trips.filter((trip) => trip.userID === userInfo.userID);
-        setMyTrips(myTrips);
-      }
-      fetchAllTrips();
+      const response = await fetch('http://localhost:3001/api/v1/trips');
+      const result = await response.json();
+      const myTrips = result.trips.filter((trip) => trip.userID === userInfo.userID);
+      setMyTrips(myTrips);
     } catch (error) {
       setNotification(n => [...n, error.message]);
     }
-  }, [userInfo.userID]);
+  }, []);
+
+  useEffect(() => {
+    fetchAllTrips();
+  }, [fetchAllTrips]);
+
 
   const addTrip = async () => {
     try {
